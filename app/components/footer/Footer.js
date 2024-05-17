@@ -7,52 +7,62 @@ import {
   IconButton,
   Box,
 } from "@mui/material";
+import styles from "./footer.module.css";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import GoogleIcon from "@mui/icons-material/Google";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import Image from "next/image";
 
 const Footer = () => {
   return (
     <Box
       component="footer"
+      className={styles.footerContainer}
       sx={{
         backgroundColor: "#240A34",
         padding: "2rem 0",
-        mt: "auto",
+        marginTop: "auto",
       }}
     >
       <Container maxWidth="lg">
         <Grid container spacing={4} justifyContent="space-between">
           <Grid item xs={12} md={4}>
-            <Typography variant="h6" gutterBottom>
-              Food Blog Company
-            </Typography>
-            <ul style={{ listStyleType: "none", padding: 0 }}>
+            <Link href="/" draggable={false}>
+              <div className={styles.footerLogo}>
+                <Image
+                  src={"/assets/foodcompanylogo.svg"}
+                  alt="foodcompanylogo"
+                  layout="fill"
+                  draggable={false}
+                />
+              </div>
+            </Link>
+            <ul className={styles.footerLinks}>
               <li>
-                <Link href="#" variant="body2" color="inherit">
+                <Link href="/about-us" variant="body1" color="inherit">
                   About us
                 </Link>
               </li>
               <li>
-                <Link href="#" variant="body2" color="inherit">
+                <Link href="/blogs" variant="body1" color="inherit">
                   Blogs
                 </Link>
               </li>
               <li>
-                <Link href="#" variant="body2" color="inherit">
+                <Link href="/orders" variant="body1" color="inherit">
                   Orders
                 </Link>
               </li>
               <li>
-                <Link href="#" variant="body2" color="inherit">
+                <Link href="/contact-us" variant="body1" color="inherit">
                   Contact Us
                 </Link>
               </li>
             </ul>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h6" gutterBottom color="inherit">
               Follow Us
             </Typography>
             <Box>
@@ -71,45 +81,28 @@ const Footer = () => {
             </Box>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h6" gutterBottom color="inherit">
               Subscribe to our newsletter
             </Typography>
-            <Typography variant="body2">
+            <Typography variant="body1" color="inherit">
               Get the latest updates and offers.
             </Typography>
             <Box component="form" sx={{ mt: 2 }}>
               <input
                 type="email"
                 placeholder="Your email"
-                style={{
-                  marginBottom: "12px",
-                  padding: "0.5rem",
-                  width: "70%",
-                  marginRight: "0.5rem",
-                  borderRadius: "4px",
-                  border: "1px solid #ccc",
-                }}
+                className={styles.footerInput}
               />
-              <button
-                type="submit"
-                style={{
-                  padding: "0.5rem 1rem",
-                  backgroundColor: "#f50057",
-                  color: "#fff",
-                  border: "none",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                }}
-              >
+              <button type="submit" className={styles.footerButton}>
                 Subscribe
               </button>
             </Box>
           </Grid>
         </Grid>
-        <Grid container justifyContent="center" style={{ marginTop: "16px" }}>
+        <Grid container justifyContent="center" sx={{ mt: 2 }}>
           <Typography variant="body1" color="inherit" align="center">
             {"Copyright © "}
-            <Link color="inherit" href="#">
+            <Link color="inherit" href="/">
               Food Blogs
             </Link>{" "}
             {new Date().getFullYear()}

@@ -18,7 +18,7 @@ const NavBar = () => {
               <Link href="/" draggable={false}>
                 <div className={styles.navbar_logo}>
                   <Image
-                    src={"/assets/7-up.svg"}
+                    src={"/assets/foodcompanylogo.svg"}
                     alt="food-blogs-logo"
                     layout="fill"
                     draggable={false}
