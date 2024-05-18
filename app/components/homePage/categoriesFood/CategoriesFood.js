@@ -24,16 +24,21 @@ const CategoriesFood = () => {
               style={{
                 position: "absolute",
                 top: "85%",
-                left: "20%",
+                left: "50%",
                 transform: "translate(-50%, -50%)",
                 background: "rgba(255, 255, 255)",
                 padding: "20px",
                 border: "2px solid green",
                 borderRadius: "16px 0px",
-                width: "400px",
               }}
             >
-              <h4 style={{ fontSize: "26px", color: "red" }}>
+              <h4
+                style={{
+                  fontSize: "26px",
+                  color: "green",
+                  fontWeight: "600",
+                }}
+              >
                 Vegan cocoa pudding{" "}
               </h4>
               <p style={{ fontSize: "12px", color: "black" }}>

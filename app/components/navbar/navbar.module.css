@@ -45,7 +45,7 @@
 
 .navlinks:hover:after {
   transform: scaleX(1);
-  border-bottom-color: #fa0653;
+  border-bottom-color: #faee06;
 }
 
 .navbar_logo {
