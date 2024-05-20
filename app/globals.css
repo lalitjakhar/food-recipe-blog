@@ -65,3 +65,17 @@ body {
   color: #013e34;
   font-family: Montserrat;
 }
+
+.ImageHeadAboutSection {
+  font-size: 54px;
+  line-height: 30px;
+  font-weight: 300;
+  color: #a65e3f;
+  font-family: Montserrat;
+}
+.Image1AboutusPage {
+  object-fit: cover;
+  width: 456px;
+  position: relative;
+  height: 610px;
+}
