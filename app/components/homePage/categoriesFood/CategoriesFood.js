@@ -5,12 +5,12 @@ import React from "react";
 const CategoriesFood = () => {
   return (
     <>
-      <div className="md:py-[56px] py-[26px]" style={{ background: "#daabff" }}>
+      <div className="md:py-[56px] py-[26px]" style={{ background: "#f0f0f0" }}>
         <Container>
           <div
             style={{
               position: "relative",
-              width: "100%",
+              width: "700px",
               height: "700px",
             }}
           >
@@ -23,13 +23,14 @@ const CategoriesFood = () => {
             <div
               style={{
                 position: "absolute",
-                top: "85%",
-                left: "50%",
+                top: "50%",
+                left: "130%",
                 transform: "translate(-50%, -50%)",
                 background: "rgba(255, 255, 255)",
                 padding: "20px",
                 border: "2px solid green",
                 borderRadius: "16px 0px",
+                width: "350px",
               }}
             >
               <h4

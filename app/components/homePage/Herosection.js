@@ -1,126 +1,146 @@
-import React from "react";
-import { Container, Grid } from "@mui/material";
+"use client";
+import React, { useEffect, useRef, useState } from "react";
+import Slider from "react-slick";
 import Image from "next/image";
-import Image1 from "../../../public/assets/image1herohome.jpg";
-import Image2 from "../../../public/assets/image2herohome.jpg";
-import Image3 from "../../../public/assets/image3herohome.jpg";
-import Image4 from "../../../public/assets/image4herohome.jpg";
-import Image5 from "../../../public/assets/image2herohome.jpg";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { Box, Typography, Container } from "@mui/material";
 
-function HeroSection() {
+const HeroSection = () => {
+  const [text, setText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopIndex, setLoopIndex] = useState(0);
+
+  const words = [
+    "Delicious Delights",
+    "Tasty Temptations",
+    "Flavorful Feasts",
+    "Yummy Yields",
+    "Nutritious & Fresh",
+  ];
+
+  useEffect(() => {
+    const typingSpeed = 150;
+    const deletingSpeed = 140;
+    const delay = isDeleting ? deletingSpeed : typingSpeed;
+
+    const loop = setInterval(() => {
+      const currentWord = words[loopIndex % words.length];
+      const isWordComplete = isDeleting ? text === "" : text === currentWord;
+
+      if (isWordComplete) {
+        setIsDeleting(!isDeleting);
+        setLoopIndex(isDeleting ? loopIndex + 1 : loopIndex);
+      }
+
+      const nextText = isDeleting
+        ? currentWord.substring(0, text.length - 1)
+        : currentWord.substring(0, text.length + 1);
+
+      setText(nextText);
+    }, delay);
+
+    return () => clearInterval(loop);
+  }, [text, isDeleting, loopIndex]);
+
+  const images = [
+    { src: "/assets/foodherosectionmainhome.jpg" },
+    { src: "/assets/foodherosectionmainhome2.jpg" },
+    { src: "/assets/foodherosectionmainhome3.jpg" },
+    { src: "/assets/foodherosectionmainhome4.jpg" },
+  ];
+
+  const sliderRef = useRef(null);
+
+  const settings = {
+    dots: false,
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    fade: true,
+  };
+
   return (
-    <div className="md:py-[px56] py-[26px]" style={{ background: "#FFEDD8" }}>
-      <Container>
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <div className="flex flex-col sm:gap-[16px] gap-[20px]">
-                <h2 className="HeadingsHomeSection sm:text-center text-left">
-                  Hello! My name is Maggy. Your new sous chef!
-                </h2>
-                <div className="flex justify-center">
-                  <p className="ParaHeroHomeSection sm:text-center text-left">
-                    Our unique toppings, spices and homemade produce Our unique
-                    toppings, spices and homemade produce
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <Grid container spacing={2}>
-          <Grid item xs={12} md={4}>
-            <div
-              style={{
-                position: "relative",
-                width: "100%",
-                height: "765px",
-              }}
-            >
+    <Box
+      sx={{
+        position: "relative",
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+      }}
+    >
+      <Box
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: 0,
+        }}
+      >
+        <Slider ref={sliderRef} {...settings}>
+          {images.map((item, index) => (
+            <Box key={index} sx={{ width: "100%", height: "100vh" }}>
               <Image
-                src={Image1}
-                alt="Image 1"
+                src={item.src}
+                alt={`slide-${index}`}
                 layout="fill"
                 objectFit="cover"
+                quality={100}
+                draggable={false}
               />
-            </div>
-          </Grid>
-          <Grid item xs={12} md={8}>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <div
-                  style={{
-                    position: "relative",
-                    width: "100%",
-                    height: "100%",
-                    paddingBottom: "100%",
-                  }}
-                >
-                  <Image
-                    src={Image2}
-                    alt="Image 2"
-                    layout="fill"
-                    objectFit="cover"
-                  />
-                </div>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <div
-                  style={{
-                    position: "relative",
-                    width: "100%",
-                    height: "100%",
-                    paddingBottom: "100%",
-                  }}
-                >
-                  <Image
-                    src={Image3}
-                    alt="Image 3"
-                    layout="fill"
-                    objectFit="cover"
-                  />
-                </div>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <div
-                  style={{
-                    position: "relative",
-                    width: "100%",
-                    height: "100%",
-                    paddingBottom: "100%",
-                  }}
-                >
-                  <Image
-                    src={Image4}
-                    alt="Image 4"
-                    layout="fill"
-                    objectFit="cover"
-                  />
-                </div>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <div
-                  style={{
-                    position: "relative",
-                    width: "100%",
-                    height: "100%",
-                    paddingBottom: "100%",
-                  }}
-                >
-                  <Image
-                    src={Image5}
-                    alt="Image 5"
-                    layout="fill"
-                    objectFit="cover"
-                  />
-                </div>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
+            </Box>
+          ))}
+        </Slider>
+        <Box
+          sx={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.4)",
+            height: "calc(100% + 6px)",
+          }}
+        />
+      </Box>
+
+      <Container sx={{ position: "relative", zIndex: 1 }}>
+        <Typography
+          variant="h2"
+          component="h1"
+          sx={{
+            textAlign: "center",
+            color: "darkorange",
+            fontSize: { xs: "40px", md: "130px" },
+            fontWeight: "800",
+            fontFamily: "Josefin Sans",
+          }}
+        >
+          {text}
+        </Typography>
+        <Typography
+          variant="h5"
+          component="p"
+          sx={{
+            textAlign: "center",
+            mt: 2,
+            color: "lightgreen",
+            fontSize: { xs: "16px", md: "30px" },
+            fontFamily: "Sedan SC, serif",
+          }}
+        >
+          Savor the best recipes and culinary tips from around the world. Your
+          journey to gastronomic pleasure begins here!
+        </Typography>
       </Container>
-    </div>
+    </Box>
   );
-}
+};
 
 export default HeroSection;

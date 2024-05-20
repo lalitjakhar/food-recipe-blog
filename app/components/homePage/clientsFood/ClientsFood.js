@@ -19,6 +19,7 @@ const ClientsFood = () => {
 
   const settings = {
     dots: false,
+    arrows: false,
     autoplay: true,
     autoplayspeed: 500,
     infinite: true,
@@ -52,15 +53,16 @@ const ClientsFood = () => {
           <div className="row">
             <div className="col-12">
               <div className="flex flex-col sm:gap-[16px] gap-[20px]">
-                <h2 className="sm:text-center text-left text-yellow-500 font-bold text-5xl">
-                  What Our Clients Say?
-                  <br /> Voices of Success
+                <h2 className="sm:text-center text-left text-yellow-500  font-bold text-5xl">
+                  The Spice of Life
                 </h2>
                 <div className="flex justify-center">
                   <p className="ParaTestimonialHeadSection sm:text-center text-left lg:max-w-[893px]">
-                    These testimonials are not just words; they are the voices
-                    of success, reflecting the tangible impact our services have
-                    had on their businesses.
+                    It is our honor and pleasure to greet guests when they are
+                    hungry, and serve them until they are full. Happiness,
+                    harmony, health, and the spice of life, infused with an
+                    invitation to explore. The gateway to a world just beyond
+                    our doorstep.
                   </p>
                 </div>
               </div>
