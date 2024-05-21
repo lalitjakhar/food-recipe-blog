@@ -66,7 +66,7 @@ const FaqSection = () => {
           <div className="row">
             <div className="flex flex-col sm:gap-[16px] gap-[8px] ">
               <Typography
-                className="md:text-center text-left"
+                className="md:text-center text-left jus"
                 variant="h2"
                 style={{ color: "black", fontWeight: "800" }}
               >

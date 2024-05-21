@@ -79,6 +79,12 @@ body {
   position: relative;
   height: 610px;
 }
+.ImagesBlogsPage {
+  object-fit: cover;
+  width: 295px;
+  position: relative;
+  height: 394px;
+}
 .QuestionFaqSection {
   font-weight: 600;
   font-size: 24px;
